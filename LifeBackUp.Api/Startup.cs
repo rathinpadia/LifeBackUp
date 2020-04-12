@@ -14,14 +14,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
 namespace LifeBackUp.Api
 {
     public class Startup
     {
-       
+
         public readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -32,11 +34,12 @@ namespace LifeBackUp.Api
             services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
             services.AddSingleton<IBucketRepository, BucketRepository>();
             services.AddSingleton<IFilesRepository, FilesRepository>();
-          
+
             services.AddMvc(option => option.EnableEndpointRouting = false);
+            AddSwaggerSupport(services);
         }
 
-     
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -54,9 +57,35 @@ namespace LifeBackUp.Api
                 await context.Response.WriteAsync(result);
             }));
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "LifeBackup API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             app.UseMvc();
 
         }
-    
+
+        private void AddSwaggerSupport(IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "LifeBackup API",
+                    Description = "Interact with Amazon Web Services (AWS) S3 with ASP.NET Core and the AWS SDK for .NET",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Rathin Padia",
+                        Email = "rathinpadia4u@gmail.com",
+                        Url = new Uri("https://www.linkedin.com/in/rathin-padia-264b8610/"),
+                    }
+                });
+            });
+        }
     }
 }
