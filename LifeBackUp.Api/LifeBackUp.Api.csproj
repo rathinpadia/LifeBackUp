@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LifeBackUp.Core\LifeBackUp.Core.csproj" />
+    <ProjectReference Include="..\LifeBackUp.Infrastructure\LifeBackUp.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NetCore.Setup" Version="3.3.101" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.50" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+</Project>
