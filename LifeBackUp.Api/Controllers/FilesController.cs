@@ -21,6 +21,12 @@ namespace LifeBackUp.Api.Controllers
             _filesRepository = filesRepository;
         }
 
+        /// <summary>
+        /// Add files to a bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="formFiles"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("{bucketName}/add")]
         public async Task<ActionResult<AddFileResponse>> AddFiles(string bucketName, IList<IFormFile> formFiles)
@@ -37,6 +43,11 @@ namespace LifeBackUp.Api.Controllers
 
         }
 
+        /// <summary>
+        /// List all the files from a bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{bucketName}/list")]
         public async Task<ActionResult<IEnumerable<ListFilesResponse>>> ListFiles(string bucketName)
@@ -46,6 +57,12 @@ namespace LifeBackUp.Api.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Download file from a bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{bucketName}/download/{fileName}")]
         public async Task<IActionResult> DownloadFile(string bucketName, string fileName)
@@ -55,6 +72,12 @@ namespace LifeBackUp.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete file from a bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("{bucketName}/delete/{fileName}")]
         public async Task<ActionResult<DeleteFileResponse>> DeleteFile(string bucketName, string fileName)
@@ -64,6 +87,12 @@ namespace LifeBackUp.Api.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Add json object to a bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("{bucketName}/addjsonobject")]
         public async Task<IActionResult> AddJsonObject(string bucketName, AddJsonObjectRequest request)
@@ -73,6 +102,12 @@ namespace LifeBackUp.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Get json object from a bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{bucketName}/getjsonobject")]
         public async Task<ActionResult<GetJsonObjectResponse>> GetJsonObject(string bucketName,string fileName)

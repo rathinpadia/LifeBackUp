@@ -20,6 +20,19 @@ namespace LifeBackUp.Api.Controllers
             _bucketRepository = bucketRepository;
         }
 
+        /// <summary>
+        /// Create a new AWS S3 Bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <returns>Newly added S3 Bucket with unique id</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST api/bucket/lifebackupbucketrp
+        ///
+        /// </remarks>
+        /// <response code="200">bucket is added successfully</response>
+        [Produces("application/json")]
         [HttpPost]
         [Route("create/{bucketName}")]
         public async Task<ActionResult<CreateBucketResponse>> CreateS3Bucket([FromRoute] string bucketName)
@@ -40,6 +53,10 @@ namespace LifeBackUp.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Lists all AWS S3 Buckets
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("list")]
         public async Task<ActionResult<IEnumerable<ListS3BucketResponse>>> ListS3Buckets()
@@ -54,6 +71,11 @@ namespace LifeBackUp.Api.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Delete an AWS S3 Bucket
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("delete/{bucketName}")]
         public async Task<IActionResult> DeleteS3Bucket(string bucketName)

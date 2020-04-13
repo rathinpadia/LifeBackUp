@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LifeBackUp.Api</name>
+    </assembly>
+    <members>
+        <member name="M:LifeBackUp.Api.Controllers.BucketController.CreateS3Bucket(System.String)">
+             <summary>
+             Create a new AWS S3 Bucket
+             </summary>
+             <param name="bucketName"></param>
+             <returns>Newly added S3 Bucket with unique id</returns>
+             <remarks>
+             Sample request:
+            
+                 POST api/bucket/lifebackupbucketrp
+            
+             </remarks>
+             <response code="200">bucket is added successfully</response>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.BucketController.ListS3Buckets">
+            <summary>
+            Lists all AWS S3 Buckets
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.BucketController.DeleteS3Bucket(System.String)">
+            <summary>
+            Delete an AWS S3 Bucket
+            </summary>
+            <param name="bucketName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.FilesController.AddFiles(System.String,System.Collections.Generic.IList{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Add files to a bucket
+            </summary>
+            <param name="bucketName"></param>
+            <param name="formFiles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.FilesController.ListFiles(System.String)">
+            <summary>
+            List all the files from a bucket
+            </summary>
+            <param name="bucketName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.FilesController.DownloadFile(System.String,System.String)">
+            <summary>
+            Download file from a bucket
+            </summary>
+            <param name="bucketName"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.FilesController.DeleteFile(System.String,System.String)">
+            <summary>
+            Delete file from a bucket
+            </summary>
+            <param name="bucketName"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.FilesController.AddJsonObject(System.String,LifeBackUp.Core.Files.AddJsonObjectRequest)">
+            <summary>
+            Add json object to a bucket
+            </summary>
+            <param name="bucketName"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LifeBackUp.Api.Controllers.FilesController.GetJsonObject(System.String,System.String)">
+            <summary>
+            Get json object from a bucket
+            </summary>
+            <param name="bucketName"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

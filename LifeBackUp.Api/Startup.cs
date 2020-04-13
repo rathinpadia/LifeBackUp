@@ -84,7 +84,12 @@ namespace LifeBackUp.Api
                         Email = "rathinpadia4u@gmail.com",
                         Url = new Uri("https://www.linkedin.com/in/rathin-padia-264b8610/"),
                     }
+
                 });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
             });
         }
     }

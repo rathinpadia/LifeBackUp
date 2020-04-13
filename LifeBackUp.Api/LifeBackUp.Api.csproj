@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>F:\Study\.Net Core\AWS\LifeBackUp\LifeBackUp.Api\LifeBackUp.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\LifeBackUp.Core\LifeBackUp.Core.csproj" />
     <ProjectReference Include="..\LifeBackUp.Infrastructure\LifeBackUp.Infrastructure.csproj" />
